@@ -16,8 +16,9 @@
   },
   "resources": [
   ],
-  "source-url": "",
+  "source-url": "https://github.com/lizmat/Git-Status.git",
   "tags": [
+    "GIT"
   ],
   "test-depends": [
   ],
