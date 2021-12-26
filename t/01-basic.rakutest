@@ -1,0 +1,11 @@
+use Test;
+use Git::Status;
+
+plan 2;
+
+my $status := Git::Status.new;
+isa-ok $status, Git::Status;
+
+is-deeply $status.directory, $*CWD, 'directory ok';
+
+# vim: expandtab shiftwidth=4
