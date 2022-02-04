@@ -87,7 +87,7 @@ if $status.untracked -> @untracked {
 
 =head1 DESCRIPTION
 
-Git::Status provides a simple way to obtain the status if a git repository.
+Git::Status provides a simple way to obtain the status of a git repository.
 
 =head1 PARAMETERS
 
