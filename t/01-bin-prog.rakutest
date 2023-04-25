@@ -1,0 +1,13 @@
+use Test;
+use Git::Status;
+use Proc::Easier;
+
+plan 1;
+
+my ($exec-args, $res);
+lives-ok {
+    $exec-args = '/bin/git-status-check';
+    $res = cmd $exec-args;
+}
+
+# vim: expandtab shiftwidth=4
