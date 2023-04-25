@@ -21,6 +21,7 @@
     "GIT"
   ],
   "test-depends": [
+    "Proc::Easier"
   ],
   "version": "0.0.1"
 }
