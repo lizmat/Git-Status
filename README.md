@@ -1,4 +1,4 @@
-[![Actions Status](https://github.com/lizmat/Git-Status/workflows/test/badge.svg)](https://github.com/lizmat/Git-Status/actions)
+[![Actions Status](https://github.com/tbrowder/Git-Status/workflows/test/badge.svg)](https://github.com/tbrowder/Git-Status/actions)
 
 NAME
 ====
@@ -79,6 +79,13 @@ untracked
 ---------
 
 The paths of files that are not tracked yet.
+
+Installed Raku program
+======================
+
+Program `git-status-check` is installed with this module and is used to provide more details of *dirty* repositories in the selected directory. It has options to select subsets of Git repositories in that directory.
+
+Execute the program without arguments to see more details.
 
 AUTHOR
 ======
