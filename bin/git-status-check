@@ -13,7 +13,8 @@ if not @*ARGS.elems {
     Options:
       first      - report the first directory
       last       - report the last directory
-      ignore=/X/ - ignore directory name satisfying regex /X/
+      ignore=/X/ - ignore directory names satisfying regex /X/
+      select=/X/ - select directory names satisfying regex /X/
       debug
 
     HERE
@@ -29,6 +30,7 @@ my $debug  = 0;
 my $first  = 0;
 my $last   = 0;
 my $ignore = 0;
+my $select = 0;
 
 for @*ARGS {
     when /^d/ { ++$debug }
@@ -37,6 +39,10 @@ for @*ARGS {
     when /^i[gnore]? '=/' (\N+) '/' $/ { 
         my $regex = ~$0;
         ++$ignore;
+    }
+    when /^s[elect]? '=/' (\N+) '/' $/ { 
+        my $regex = ~$0;
+        ++$select;
     }
     default {
         die  "FATAL: Unknown arg '$_'";
