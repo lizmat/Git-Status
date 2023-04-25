@@ -7,7 +7,10 @@ if not @*ARGS.elems {
     print qq:to/HERE/;
     Usage: {$*PROGRAM.basename} <dir> [...options...]
 
-    Checks and reports details of the Git status of all directories under directory 'dir'.
+    Checks and reports details of the Git status of all directories 
+    under directory 'dir' which are 'dirty' (i.e, having a non-zero
+    Git::Status.
+
     (Note <dir> must be the first argument entered.)
 
     Options:
