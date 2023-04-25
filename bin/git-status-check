@@ -1,0 +1,71 @@
+#!/usr/bin/env raku
+
+use File::Find;
+use Git::Status;
+
+if not @*ARGS.elems {
+    print qq:to/HERE/;
+    Usage: {$*PROGRAM.basename} <dir> [...options...]
+
+    Checks and reports details of the Git status of all directories under directory 'dir'.
+    (Note <dir> must be the first argument entered.)
+
+    Options:
+      first      - report the first directory
+      last       - report the last directory
+      ignore=/X/ - ignore directory name satisfying regex /X/
+      debug
+
+    HERE
+    exit;
+}
+
+my $dir = @*ARGS.shift;
+if not $dir.IO.d {
+    die "FATAL: '$dir' is not a directory.";
+}
+
+my $debug  = 0;
+my $first  = 0;
+my $last   = 0;
+my $ignore = 0;
+
+for @*ARGS {
+    when /^d/ { ++$debug }
+    when /^f/ { ++$first }
+    when /^l/ { ++$last  }
+    when /^i[gnore]? '=/' (\N+) '/' $/ { 
+        my $regex = ~$0;
+        ++$ignore;
+    }
+    default {
+        die  "FATAL: Unknown arg '$_'";
+    }
+}
+
+my @dirs = find :$dir, :type('dir'); #, :keep-going(False);
+my $nd = @dirs.elems;
+say "Found $nd directories under directory '$dir'.";
+my $ng = 0;
+for @dirs -> $d {
+    next unless "$d/.git".IO.d;
+    my $gs = Git::Status.new: :directory($d);
+    # possible results
+    my @add = $gs.added;
+    my @del = $gs.deleted;
+    my @mod = $gs.modified;
+    my @untrack = $gs.untracked;
+    if $gs.gist {
+        say "  Found git repo at dir '$d'";
+        say "    added    : $_" for @add;
+        say "    deleted  : $_" for @del;
+        say "    modified : $_" for @mod;
+        say "    untracked: $_" for @untrack;
+        ++$ng;
+        say "    directory is dirty";
+    }
+}
+say "Found $ng dirty git repos";
+
+
+
