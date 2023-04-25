@@ -1,4 +1,4 @@
-[![Actions Status](https://github.com/tbrowder/Git-Status/workflows/test/badge.svg)](https://github.com/tbrowder/Git-Status/actions)
+[![Actions Status](https://github.com/lizmat/Git-Status/workflows/test/badge.svg)](https://github.com/lizmat/Git-Status/actions)
 
 NAME
 ====
