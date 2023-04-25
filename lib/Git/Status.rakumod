@@ -43,7 +43,7 @@ method gist() {
     seen("Deleted:",   @!deleted)   if @!deleted;
     seen("Modified:",  @!modified)  if @!modified;
     seen("Untracked:", @!untracked) if @!untracked;
-    
+
     @parts.prepend: self.^name ~ ":", "  $!directory", "" if @parts;
 
     @parts.join: "\n"
@@ -122,6 +122,14 @@ The paths of files that have been modified.
 =head2 untracked
 
 The paths of files that are not tracked yet.
+
+=head1 Installed Raku program
+
+Program C<git-status-check> is installed with this module and is used
+to provide more details of I<dirty> repositories in the selected directory.
+It has options to select subsets of Git repositories in that directory.
+
+Execute the program without arguments to see more details.
 
 =head1 AUTHOR
 
