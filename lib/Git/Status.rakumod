@@ -5,7 +5,6 @@ has str  @.added     is built(False);
 has str  @.deleted   is built(False);
 has str  @.modified  is built(False);
 has str  @.untracked is built(False);
-has str  @.newfile   is built(False);
 has str  @.renamed   is built(False);
 
 method TWEAK() {
@@ -26,10 +25,7 @@ method TWEAK() {
             elsif .starts-with('A') {
                 @!added.push($path);
             }
-            elsif .substr-eq('N', 1) {
-                @!newfile.push: $path;
-            }
-            elsif .substr-eq('R', 1) {
+            elsif .starts-with('R') {
                 @!renamed.push: $path;
             }
             else {
