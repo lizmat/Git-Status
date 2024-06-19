@@ -2,5 +2,9 @@ Revision history for Git-Status
 
 {{$NEXT}}
 
+0.0.2  2024-06-19T10:57:07+02:00
+    - Added support for new and renamed files, courtesy of
+      Tom Browder++
+
 0.0.1  2021-12-26T20:39:36+01:00
     - Initial version

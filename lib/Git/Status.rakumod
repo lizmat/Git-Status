@@ -1,4 +1,4 @@
-unit class Git::Status:ver<0.0.1>:auth<zef:lizmat>;
+unit class Git::Status;
 
 has IO() $.directory = $*CWD.absolute;
 has str  @.added     is built(False);
@@ -50,6 +50,8 @@ method gist() {
     seen("Added:",     @!added)     if @!added;
     seen("Deleted:",   @!deleted)   if @!deleted;
     seen("Modified:",  @!modified)  if @!modified;
+    seen("New:",       @!newfile)   if @!newfile;
+    seen("Renamed:",   @!renamed)   if @!renamed;
     seen("Untracked:", @!untracked) if @!untracked;
     
     @parts.prepend: self.^name ~ ":", "  $!directory", "" if @parts;
