@@ -5,6 +5,8 @@ has str  @.added     is built(False);
 has str  @.deleted   is built(False);
 has str  @.modified  is built(False);
 has str  @.untracked is built(False);
+has str  @.newfile   is built(False);
+has str  @.renamed   is built(False);
 
 method TWEAK() {
     indir $!directory, {
@@ -23,6 +25,12 @@ method TWEAK() {
             }
             elsif .starts-with('A') {
                 @!added.push($path);
+            }
+            elsif .substr-eq('N', 1) {
+                @!newfile.push: $path;
+            }
+            elsif .substr-eq('R', 1) {
+                @!renamed.push: $path;
             }
             else {
                 note "Unrecognized: '$_'";
@@ -78,6 +86,16 @@ if $status.modified -> @modified {
     .say for @modified;
 }
 
+if $status.newfile -> @newfile {
+    say "Newfile:";
+    .say for @newfile;
+}
+
+if $status.renamed -> @renamed {
+    say "Renamed:";
+    .say for @renamed;
+}
+
 if $status.untracked -> @untracked {
     say "Untracked:";
     .say for @untracked;
@@ -123,6 +141,14 @@ The paths of files that have been modified.
 
 The paths of files that are not tracked yet.
 
+=head2 newfile
+
+The paths of files that are new.
+
+=head2 renamed
+
+The paths of files that are renamed.
+
 =head1 AUTHOR
 
 Elizabeth Mattijsen <liz@raku.rocks>
@@ -132,7 +158,7 @@ Comments and Pull Requests are welcome.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2021 Elizabeth Mattijsen
+Copyright 2021, 2024 Elizabeth Mattijsen
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 

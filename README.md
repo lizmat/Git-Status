@@ -28,6 +28,16 @@ if $status.modified -> @modified {
     .say for @modified;
 }
 
+if $status.newfile -> @newfile {
+    say "Newfile:";
+    .say for @newfile;
+}
+
+if $status.renamed -> @renamed {
+    say "Renamed:";
+    .say for @renamed;
+}
+
 if $status.untracked -> @untracked {
     say "Untracked:";
     .say for @untracked;
@@ -80,6 +90,16 @@ untracked
 
 The paths of files that are not tracked yet.
 
+newfile
+-------
+
+The paths of files that are new.
+
+renamed
+-------
+
+The paths of files that are renamed.
+
 AUTHOR
 ======
 
@@ -90,7 +110,7 @@ Source can be located at: https://github.com/lizmat/Git-Status . Comments and Pu
 COPYRIGHT AND LICENSE
 =====================
 
-Copyright 2021 Elizabeth Mattijsen
+Copyright 2021, 2024 Elizabeth Mattijsen
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 
