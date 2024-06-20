@@ -9,9 +9,48 @@ has str  @.renamed   is built(False);
 
 method TWEAK() {
     indir $!directory, {
+        # By default, the git command is using version 1 format:
+        # XY PATH
+        # XY ORIG_PATH -> PATH
+
         my $proc := run <git status --porcelain>, :out;
         for $proc.out.lines {
+            my %h; # the two XY chars which may be the same. 
+                   # spaces are ignored
             my $path := .substr(3);
+            my @c = $_.comb[0..1];
+            for @c {
+                next if $_ eq ' ';
+                %h{$_} = 1;
+            }
+            for %h.keys {
+                # there are 10 known non-space characters
+                when $_ eq 'M' {
+                    # Modified  
+                }
+                when $_ eq 'A' {
+                    # Added
+                }
+                when $_ eq 'D' {
+                    # Deleted
+                }
+                when $_ eq 'R' {
+                    # Renamed
+                }
+                when $_ eq 'C' {
+                    # Copied
+                }
+                when $_ eq 'U' {
+                    # Updated, but Unmerged
+                }
+                when $_ eq '?' {
+                    # Untracked path
+                }
+                when $_ eq '!' {
+                    # Ignored path
+                }
+            }
+
             if .starts-with('?? ') {
                 @!untracked.push: $path;
             }
