@@ -13,6 +13,15 @@ use Git::Status;
 
 my $status := Git::Status.new(:$directory);
 
+if $status.is-clean {
+    say "Is clean";
+}
+
+if $status.modified -> @modified {
+    say "Modified:";
+    .say for @modified;
+}
+
 if $status.added -> @added {
     say "Added:";
     .say for @added;
@@ -23,19 +32,19 @@ if $status.deleted -> @deleted {
     .say for @deleted;
 }
 
-if $status.modified -> @modified {
-    say "Modified:";
-    .say for @modified;
-}
-
-if $status.newfile -> @newfile {
-    say "Newfile:";
-    .say for @newfile;
-}
-
 if $status.renamed -> @renamed {
     say "Renamed:";
     .say for @renamed;
+}
+
+if $status.copied -> @copied {
+    say "Copied:";
+    .say for @copied;
+}
+
+if $status.updated -> @updated {
+    say "Updated:";
+    .say for @updateded;
 }
 
 if $status.untracked -> @untracked {
@@ -47,7 +56,9 @@ if $status.untracked -> @untracked {
 DESCRIPTION
 ===========
 
-Git::Status provides a simple way to obtain the status of a git repository.
+Git::Status provides a simple way to obtain the status of a git repository using the `git status --porcelain` command (version 1) and simplifying the results to indicate whether the repository is 'clean' or 'dirty'. This module's primary purpose is to determine whether any action is required to satisfy further use by `App::Mi6` or to indicate user intervention is necessary.
+
+Note the full output of `git status --porcelain` is quite complex and completely identifies the situation with regards to both the index and the working tree (a complex task with many possible combinations). See the `git-status` man page for details.
 
 PARAMETERS
 ==========
@@ -59,6 +70,16 @@ The directory of the git repository. Can be specified as either an `IO::Path` ob
 
 METHODS
 =======
+
+is-clean
+--------
+
+Returns the value of the $!clean variable which is True for a "clean" Git directory.
+
+gist
+----
+
+A text representation of the object, empty string if there were no modified, added, deleted, renamed, copied, updated, or untracked files.
 
 added
 -----
@@ -74,11 +95,6 @@ directory
 ---------
 
 The directory of the repository, as an `IO::Path` object.
-
-gist
-----
-
-A text representation of the object, empty string if there were no added, deleted or modified files.
 
 modified
 --------
