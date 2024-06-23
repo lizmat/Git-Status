@@ -1,6 +1,18 @@
 Revision history for Git-Status
 
 {{$NEXT}}
+    - Updated to notifify of all seven non-blank Git status codes indicating
+      a "dirty" repository (i.e., anything that would throw an exception
+      with App::Mi6)
+    - Numbered all instances and showed codes 1-7 in the order shown in the
+      git-status man page to help ensure complete coverage
+    - Removed the incorrect "New" code added in the last version
+    - Added more README notes about the latest handling of git-status with
+      reference to Git documentation
+    - Added /xt testing
+    - Added two .gitignore entries for git-status man page PS and PDF generation
+    - Added a test dependency: File::Temp
+    - Added method 'is-clean' as a simple summary check
 
 0.0.2  2024-06-19T10:57:07+02:00
     - Added support for new and renamed files, courtesy of

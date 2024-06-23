@@ -1,3 +1,5 @@
 .precomp/
 /Git-Status-*
 /releases/
+git-status.pdf
+git-status.ps

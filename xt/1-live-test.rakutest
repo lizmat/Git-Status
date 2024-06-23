@@ -1,0 +1,29 @@
+use Test;
+
+use File::Temp;
+
+use Git::Status;
+
+my $tmpdir = tempdir;
+my $dir    = $*CWD;
+
+chdir $tmpdir;
+run <git init --quiet>;
+# add a file
+my $f = "text.txt"; 
+spurt $f, "some text";
+is $f.IO.r, True, "\$f is a valid file";
+
+run <<git add $f>>;
+
+chdir $dir;
+my $status = Git::Status.new: :directory($tmpdir);
+
+
+is "$tmpdir/.git".IO.d, True, "is a git dir";
+is "$tmpdir/$f".IO.f, True, "is a file";
+
+is $status.clean, False, "dirty git repo";
+
+done-testing;
+
