@@ -1,6 +1,8 @@
 Revision history for Git-Status
 
 {{$NEXT}}
+    - Fixed git error with zef install by comparing lists of subdirectories
+    - Added an addional /xt test
 
 0.0.3  2024-06-23T13:45:23+02:00
     - Updated to notifify of all seven non-blank Git status codes indicating
