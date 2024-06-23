@@ -29,4 +29,5 @@ jobs:
           zef install --/test --deps-only .
       - name: Run Tests
         run: raku run-tests
+      - name: Install Module
         run: zef --debug install .
