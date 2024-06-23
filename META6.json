@@ -6,6 +6,7 @@
   "build-depends": [
   ],
   "depends": [
+    "File::Find"
   ],
   "description": "obtain status of a git repository",
   "license": "Artistic-2.0",
@@ -21,7 +22,6 @@
     "GIT"
   ],
   "test-depends": [
-    "File::Find",
     "File::Temp"
   ],
   "version": "0.0.3"
