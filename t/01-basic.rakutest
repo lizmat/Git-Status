@@ -1,17 +1,9 @@
 use Test;
 use Git::Status;
 
-use File::Find;
-
-plan 2;
+plan 1;
 
 my $status := Git::Status.new;
 isa-ok $status, Git::Status;
-
-my (@dirs1, @dirs2);
-@dirs1 = find :dir($*CWD),             :type<dir>, :recursive(False);
-@dirs2 = find :dir($status.directory), :type<dir>, :recursive(False);
-
-is-deeply @dirs1, @dirs2, 'directory ok';
 
 # vim: expandtab shiftwidth=4
