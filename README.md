@@ -1,4 +1,4 @@
-[![Actions Status](https://github.com/lizmat/Git-Status/workflows/linux/badge.svg)](https://github.com/lizmat/Git-Status/actions) [![Actions Status](https://github.com/lizmat/Git-Status/workflows/macos/badge.svg)](https://github.com/lizmat/Git-Status/actions) [![Actions Status](https://github.com/lizmat/Git-Status/workflows/windows/badge.svg)](https://github.com/lizmat/Git-Status/actions)
+[![Actions Status](https://github.com/lizmat/Git-Status/actions/workflows/linux.yml/badge.svg)](https://github.com/lizmat/Git-Status/actions) [![Actions Status](https://github.com/lizmat/Git-Status/actions/workflows/macos.yml/badge.svg)](https://github.com/lizmat/Git-Status/actions) [![Actions Status](https://github.com/lizmat/Git-Status/actions/workflows/windows.yml/badge.svg)](https://github.com/lizmat/Git-Status/actions)
 
 NAME
 ====
