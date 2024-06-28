@@ -1,6 +1,8 @@
 Revision history for Git-Status
 
 {{$NEXT}}
+    - Updated GitHub workflows testing to use test badges for three OSs: Linux, MacOS, and Windows
+    - Updated GitHub workflows actions to v3 to eliminate Node error
     - Fixed git error with zef install by comparing lists of subdirectories
     - Added an addional /xt test
 
