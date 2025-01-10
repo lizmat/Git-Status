@@ -1,10 +1,14 @@
 Revision history for Git-Status
 
 {{$NEXT}}
-    - Updated GitHub workflows testing to use test badges for three OSs: Linux, MacOS, and Windows
-    - Updated GitHub workflows actions to v3 to eliminate Node error
-    - Fixed git error with zef install by comparing lists of subdirectories
-    - Added an addional /xt test
+    - Silenced error output on invalid directories
+    - Added CI badge for each OS
+    - Updated GitHub workflows actions to v3 to
+      eliminate Node error
+    - Fixed git error with zef install by comparing
+      lists of subdirectories
+    - Added additonal /xt tests
+    - Updated copyright year
 
 0.0.3  2024-06-23T13:45:23+02:00
     - Updated to notifify of all seven non-blank Git status codes indicating
